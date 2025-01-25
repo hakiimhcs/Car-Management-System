@@ -1,0 +1,123 @@
+{% extends 'basic.html' %}
+{% block title %}Contact{% endblock title %}
+
+{% block body %}
+<style>
+    .contact-container {
+        max-width: 800px;
+        margin: 2rem auto;
+        padding: 2rem;
+    }
+    
+    .contact-fieldset {
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        padding: 2rem;
+        background-color: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    .contact-legend {
+        font-size: 1.5rem;
+        padding: 0 1rem;
+        color: #28a745;
+        font-weight: bold;
+    }
+    
+    .contact-item {
+        display: flex;
+        align-items: center;
+        margin: 1.5rem 0;
+        padding: 0.5rem;
+        transition: transform 0.2s;
+    }
+    
+    .contact-item:hover {
+        transform: translateX(10px);
+    }
+    
+    .icon-wrapper {
+        width: 50px;
+        text-align: center;
+        margin-right: 1rem;
+    }
+    
+    .contact-content {
+        font-size: 1.1rem;
+        color: #333;
+    }
+    
+    .contact-link {
+        text-decoration: none;
+        color: #007bff;
+        transition: color 0.2s;
+    }
+    
+    .contact-link:hover {
+        color: #0056b3;
+        text-decoration: underline;
+    }
+</style>
+
+<h1 class="text-center text-success mb-4">Contact</h1>
+
+<div class="contact-container">
+    <fieldset class="contact-fieldset">
+        <legend class="contact-legend font-effect-neon text-center">CONTACT DETAILS</legend>
+        
+        <div class="contact-item">
+            <div class="icon-wrapper">
+                <i class="fas fa-map-marker-alt fa-2x" style="color: #dc3545;"></i>
+            </div>
+            <div class="contact-content">KAMPALA, UGANDA</div>
+        </div>
+
+        <div class="contact-item">
+            <div class="icon-wrapper">
+                <i class="fas fa-envelope fa-2x" style="color: #6c757d;"></i>
+            </div>
+            <div class="contact-content">hakiimhcs2@gmail.com</div>
+        </div>
+
+        <div class="contact-item">
+            <div class="icon-wrapper">
+                <i class="fas fa-clock fa-2x" style="color: #6c757d;"></i>
+            </div>
+            <div class="contact-content">10 AM - 5 PM</div>
+        </div>
+
+        <div class="contact-item">
+            <div class="icon-wrapper">
+                <i class="fab fa-whatsapp fa-2x" style="color: #25D366;"></i>
+            </div>
+            <div class="contact-content">
+                <a href="https://wa.me/+256000000000" 
+                   target="_blank" 
+                   class="contact-link">WhatsApp</a>
+            </div>
+        </div>
+
+        <div class="contact-item">
+            <div class="icon-wrapper">
+                <i class="fab fa-linkedin fa-2x" style="color: #0077b5;"></i>
+            </div>
+            <div class="contact-content">
+                <a href="https://www.linkedin.com/in/sandip-kanzariya-8416b523a/" 
+                   target="_blank" 
+                   class="contact-link">Hakiim</a>
+            </div>
+        </div>
+
+        <div class="contact-item">
+            <div class="icon-wrapper">
+                <i class="fab fa-twitter fa-2x" style="color: #1da1f2;"></i>
+            </div>
+            <div class="contact-content">
+                <a href="https://twitter.com/SANDIP_K_A" 
+                   target="_blank" 
+                   class="contact-link">Hakiim</a>
+            </div>
+        </div>
+    </fieldset>
+</div>
+{% endblock body %}

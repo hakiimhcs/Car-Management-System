@@ -1,0 +1,41 @@
+{% extends 'basic.html' %} {% block title %}View Car {% endblock title %} {% block body %}
+<h3 class="text-success"> Details</h3>
+<hr>
+<div class="container mx-0 ">
+    
+    <p><b>Number :-</b> {{car.carnumber}}</p>
+    <p><b>Type :-</b> {{car.get_car_type_display}}</p>
+    <p><b>Capacity :-</b> {{car.capacity}} person</p>
+    <p><b>Size :-</b> {{car.size}} ft</p>
+    <p><b>Status :-</b> {{car.get_status_display| capfirst}} </p>
+    <p><b>City(Address) :-</b> {{car.parking.location| capfirst}} </p>
+    <p><b>State :-</b> {{car.parking.state| capfirst}} </p>
+    <p><b>Country :-</b> {{car.parking.country| capfirst}} </p>
+</div>
+
+
+<hr> {% if reservations %}
+<h3 class="text-success">Bookings :-</h3>
+<table class="table">
+    <thead>
+        <th>Username</th>
+        <th>Person</th>
+        <th>check in</th>
+        <th>check out</th>
+    </thead>
+    {% for each_detail in reservations %}
+    <tr>
+        <td>{{each_detail.customer.username}}</td>
+        <td>{{each_detail.car.capacity}}</td>
+        <td>{{each_detail.check_in}}</td>
+        <td>{{each_detail.check_out}}</td>
+    </tr>
+    {% endfor %}
+    <tr>
+        <td><b>Total bookings = </b>{{reservations | length}}</td>
+    </tr>
+
+</table>
+{% else %}
+<p>No details found</p>
+{% endif %} {% endblock body %}

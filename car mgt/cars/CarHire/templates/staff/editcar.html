@@ -1,0 +1,209 @@
+{% extends 'basic.html' %}
+{% block title %}Edit Car
+{% endblock title %}
+{% block css %}
+<style>
+        .progress {
+            width: 150px;
+            height: 150px;
+            background: none;
+            position: relative;
+        }
+        
+        .progress::after {
+            content: "";
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 6px solid #eee;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        
+        .progress>span {
+            width: 50%;
+            height: 100%;
+            overflow: hidden;
+            position: absolute;
+            top: 0;
+            z-index: 1;
+        }
+        
+        .progress .progress-left {
+            left: 0;
+        }
+        
+        .progress .progress-bar {
+            width: 100%;
+            height: 100%;
+            background: none;
+            border-width: 6px;
+            border-style: solid;
+            position: absolute;
+            top: 0;
+        }
+        
+        .progress .progress-left .progress-bar {
+            left: 100%;
+            border-top-right-radius: 80px;
+            border-bottom-right-radius: 80px;
+            border-left: 0;
+            -webkit-transform-origin: center left;
+            transform-origin: center left;
+        }
+        
+        .progress .progress-right {
+            right: 0;
+        }
+        
+        .progress .progress-right .progress-bar {
+            left: -100%;
+            border-top-left-radius: 80px;
+            border-bottom-left-radius: 80px;
+            border-right: 0;
+            -webkit-transform-origin: center right;
+            transform-origin: center right;
+        }
+        
+        .progress .progress-value {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        /*
+*
+* ==========================================
+* FOR DEMO PURPOSE
+* ==========================================
+*
+*/
+        
+        body {
+            min-height: 100vh;
+        }
+        
+        .rounded-lg {
+            border-radius: 1rem;
+        }
+        
+        .text-gray {
+            color: #aaa;
+        }
+        
+        div.h4 {
+            line-height: 1rem;
+        }
+    </style>
+{% endblock css %}
+{% block body %}
+<h1 class="text-center bg-warning my-0">Edit Car</h1>
+    <!--Staff section -->
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-6 col-lg-6 col-xlg-6 col-sm-12 mx-auto">
+
+                <form action="/staff/panel/edit-car/edit" method="POST">
+                    {%csrf_token%}
+                    <div class="form-group">
+                        <label for="pwd">Car Number:</label>
+                        <input type="number" class="form-control" id="carnumber" name="carnumber" value="{{car.carnumber}}" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Car Type:</label>
+                        <select class="form-control" name="cartype" id="cartype">
+                            
+                            
+                            
+                            <option value="1">Toyota Harrier</option>
+                            <option value="2">Toyota Surf</option>
+                            <option value="3">Subaru Forester</option>
+                            <option value="4">Subaru Outback</option>
+                            <option value="5">Subaru Cross</option>
+                            <option value="6">Subaru Impreza</option>
+                            <option value="7">Nissan X-Trail</option>
+                            <option value="8">Mazda CX-5</option>
+                            <option value="9">Toyota RAV4</option>
+                            <option value="10">Mitsubishi Pajero</option>
+                            <option value="11">Mitsubishi Montero</option>
+                            <option value="12">Mitsubishi Montero Sport</option>
+                            <option value="13">Toyota Land Cruiser Prado</option>
+                            <option value="14">Toyota Fortuner</option>
+                            <option value="15">Nissan Patro</option>
+                            <option value="16">Toyota RAV4 Avensis</option>
+                            <option value="17">Toyota Highlander</option>
+                            <option value="18">Nissan Altima</option>
+                            <option value="19">Nissan Rogue</option>
+                            <option value="20">Honda Civic</option>
+                            <option value="21">Honda CR-V</option>
+                            <option value="22">Ford Fusion</option>
+                            <option value="23">Ford Mustang</option>
+                            <option value="24">Ford Explorer</option>
+                            <option value="25">Ford Focus</option>
+                            <option value="26">Ford Fiesta</option>
+                            <option value="27">Ford Edge</option>
+                            <option value="28">Ford C-Max Hybrid</option>
+                            <option value="29">Ford Mustang GT</option>
+                            <option value="30">Ford Escape</option>
+
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="pwd">Capacity:</label>
+                        <input type="number" class="form-control " id="capacity" name="capacity" value="{{car.capacity}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="pwd">Price:</label>
+                        <input type="mumber" class="form-control " id="price" name="price" value="{{car.price}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="pwd">Size:</label>
+                        <input type="number" class="form-control " id="size" name="size" value="{{car.size}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="pwd">Status:</label>
+                        <select class="form-control" name="status" id="status">
+                            <option value="1">Available</option>
+                            <option value="2">Not Available</option>
+                            
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="pwd">Location:</label>
+                        <input type="text" class="form-control " id="parking" name="parking" value="{{car.parking.location}}" disabled>
+                    </div>
+                    <button type="submit" class="btn btn-danger">Save</button>
+                    <input type="hidden" name="carid" value="{{car.id}}">
+                    <input type="hidden" name="cartypevalue" id="cartypevalue" value="{{car.car_type}}">
+                    <input type="hidden" name="carstatus" id="carstatus" value="{{car.status}}">
+                    <input type="hidden" class="form-control " id="parking" name="parking" value="{{car.parking.id}}">
+                    <input type="hidden" class="form-control" id="carnumber" name="carnumber" value="{{car.carnumber}}">
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock body %}
+    {% block js %}
+    <script>
+    $(document).ready(function() {
+
+        //for  car type
+        var x = $("#cartypevalue").val()
+        $("#cartype").val(Number(x)).attr("selected", "selected");
+
+        //for car status
+        var x = $("#carstatus").val()
+        $("#status").val(Number(x)).attr("selected", "selected");
+
+    });
+</script>
+    {% endblock js %}
+    
+
+
+
+
+
+
+   
